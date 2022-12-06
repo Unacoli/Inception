@@ -5,39 +5,16 @@ services:
   nginx:
     container_name: nginx
     image: nginx:latest
+    networks:
+      - nginx
     ports:
       - 443:443
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
-    env_file:
-      - .env
     restart: unless-stopped
-
-  mariadb:
-    container_name: mariadb
-    image: mariadb:latest
-    networks:
-      - mariadb
-    volumes:
-      - ./mariadb/conf/:/etc/mariadb/conf.d/:ro
-    env_file:
-      - .env
-    restart: unless-stopped
-
-  wordpress:
-    image: wordpress:latest
-    depends_on:
-      - mariadb
-    networks:
-      - mariadb
-      - nginx
-    volumes:
-      - ./wordpress/conf/:/etc/wordpress/conf.d/:ro
-    env_file:
-      - .env
-    restart: unless-stopped
+    environment:
+      - NGINX_HOST=nargouse.42.fr
+      - NGINX_PORT=443
 
 networks:
   nginx:
-
-  mariadb:

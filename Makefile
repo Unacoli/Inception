@@ -10,23 +10,26 @@ DOCO	= docker-compose -f srcs/docker-compose.yml -p ${NAME}
 
 # General rules
 
-all :
-	${DOCO} up -d --build
+all: build upd
 
-stop :
+stop:
 	$(DOCO) stop
 
 clean:
 	${DOCO} down -v
-	if [ -n "(${DOCO} images -q)" ]; then \
-		docker image rm $$(${DOCO} image -q); \
-	fi
 
 fclean : clean
-	sudo rm -rf /home/&&USER/data/mariadb-data /home/$$USER/data/wordpress-data /home/$$USER/data/ss1
 
 re: fclean all
 
+# Docker rules
+
+build:
+	${DOCO} build
+
+upd:
+	${DOCO} up -d
+
 # PHONY
 
-.PHONY: all stop clean fclean re
+.PHONY: all run ssl stop clean fclean re build upd
