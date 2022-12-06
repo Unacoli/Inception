@@ -10,11 +10,8 @@ services:
     ports:
       - 443:443
     volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./requirements/nginx/conf/:/etc/nginx/conf.d/:ro
     restart: unless-stopped
-    environment:
-      - NGINX_HOST=nargouse.42.fr
-      - NGINX_PORT=443
 
 networks:
   nginx:

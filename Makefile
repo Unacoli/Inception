@@ -6,7 +6,7 @@ export
 # Variables
 
 NAME	= inception
-DOCO	= docker-compose -f srcs/docker-compose.yml -p ${NAME}
+DOCO	= sudo docker-compose -f srcs/docker-compose.yml -p ${NAME}
 
 # General rules
 
