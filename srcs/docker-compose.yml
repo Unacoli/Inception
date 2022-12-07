@@ -9,9 +9,12 @@ services:
     ports:
       - 443:443
     volumes:
-      - ./requirements/nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./nginx/tools:/etc/nginx/:ro
+      - ./images/nginx/ssl:/etc/ssl/:ro
+      - ./images/nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./images/nginx/html/:/html/:ro
+      
     restart: unless-stopped
 
 networks:
   nginx:
+ 
