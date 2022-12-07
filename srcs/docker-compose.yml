@@ -9,7 +9,7 @@ services:
     ports:
       - 443:443
     volumes:
-      - ./images/nginx/ssl:/etc/ssl/:ro
+      - ./images/nginx/ssl:/etc/nginx/ssl/mycerts:ro
       - ./images/nginx/conf/:/etc/nginx/conf.d/:ro
       - ./images/nginx/html/:/html/:ro
       
