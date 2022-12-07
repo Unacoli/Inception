@@ -3,7 +3,6 @@ version: '3'
 services:
 
   nginx:
-    container_name: nginx
     image: nginx:latest
     networks:
       - nginx
@@ -11,6 +10,7 @@ services:
       - 443:443
     volumes:
       - ./requirements/nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./nginx/tools:/etc/nginx/:ro
     restart: unless-stopped
 
 networks:
