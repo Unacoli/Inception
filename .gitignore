@@ -1,3 +1,4 @@
 /srcs/images/nginx/ssl/cert.pem
 /srcs/images/nginx/ssl/key.pem
 /srcs/images/nginx/ssl/v3.ext
+/srcs/.env
