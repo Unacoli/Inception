@@ -11,19 +11,19 @@ services:
     volumes:
       - ./images/nginx/ssl:/etc/nginx/ssl/mycerts:ro
       - ./images/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./images/nginx/code/:/code/:ro
+      - wp_data:/var/www/html
     depends_on:
       - wordpress
     restart: unless-stopped
 
   wordpress:
-    image: php:fpm
+    image: wordpress:php8.1-fpm
     networks:
       - nginx-network
     depends_on:
       - mariadb
     volumes:
-      - ./images/nginx/code/:/code/:ro
+      - wp_data:/var/www/html
     restart: unless-stopped
     env_file:
       - .env

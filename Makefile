@@ -16,9 +16,10 @@ stop:
 	$(DOCO) stop
 
 clean:
-	${DOCO} down -v
+	${DOCO} down
 
 fclean : clean
+	${DOCO} down -v
 
 re: fclean all
 
