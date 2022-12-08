@@ -33,7 +33,7 @@ services:
     networks:
       - nginx-network
     volumes:
-     - mysqldata:/var/lib/mysql
+     - mariadb_data:/var/lib/mysql
     restart: unless-stopped
     env_file:
       - .env
@@ -43,7 +43,17 @@ networks:
     driver: bridge
 
 volumes:
-  mysqldata:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/$USER/data/mariadb_data
+      o: bind
 
   wp_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/$USER/data/wp_data
+      o: bind
  
