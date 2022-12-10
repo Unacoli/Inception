@@ -4,12 +4,15 @@ services:
 
   nginx:
     container_name: nginx
+#    image: nginx:latest
     build: ./images/nginx
     networks:
       - nginx-network
     ports:
       - 443:443
     volumes:
+#      - ./images/nginx/ssl:/etc/nginx/ssl/mycerts:ro
+#      - ./images/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf
       - wp_data:/var/www/html
     depends_on:
       - wordpress
@@ -17,7 +20,8 @@ services:
 
   wordpress:
     container_name: wordpress
-    image: wordpress:php8.1-fpm
+#    image: wordpress:php8.1-fpm
+    build: ./images/wordpress
     networks:
       - nginx-network
     depends_on:
@@ -30,7 +34,8 @@ services:
 
   mariadb:
     container_name: mariadb
-    image: mariadb:latest
+#    image: mariadb:latest
+    build: ./images/mariadb
     networks:
       - nginx-network
     volumes:

@@ -394,7 +394,7 @@ CREATE TABLE `wp_users` (
 
 LOCK TABLES `wp_users` WRITE;
 /*!40000 ALTER TABLE `wp_users` DISABLE KEYS */;
-INSERT INTO `wp_users` VALUES (1,'vbachele','$P$BFwyV/GXu8rhctqT40E4ozlZ9vAoQg/','vbachele','vcbachelet@gmail.com','https://vbachele.42.fr','2022-09-28 15:59:52','',0,'vbachele');
+INSERT INTO `wp_users` VALUES (1,'nargouse','$P$BFwyV/GXu8rhctqT40E4ozlZ9vAoQg/','nargouse','nargouse@student.42.fr','https://nargouse.42.fr','2022-12-09 15:59:52','',0,'nargouse');
 /*!40000 ALTER TABLE `wp_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
