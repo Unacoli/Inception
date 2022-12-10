@@ -18,8 +18,10 @@ data: ssl
 	mkdir -p "/home/$$USER/data/wp_data/"
 
 ssl:
-	mkdir -p "/srcs/images/nginx/ssl/"
-	openssl req -newkey rsa:4096 -nodes -keyout "/srcs/images/nginx/ssl/key.pem" -x509 -days 365 -out "/srcs/images/nginx/ssl/cert.pem"
+	mkdir -p "./srcs/images/nginx/ssl/"
+	if [ ! -f "./srcs/images/nginx/ssl/cert.pem" ] || [ ! -f "./srcs/images/nginx/ssl/key.pem" ]; then \
+	openssl req -newkey rsa:4096 -nodes -keyout "./srcs/images/nginx/ssl/key.pem" -x509 -days 365 -out "./srcs/images/nginx/ssl/cert.pem" -subj "/CN=$$DOMAIN_NAME" -addext "subjectAltName=DNS:$$DOMAIN_NAME,DNS:$$DOMAIN_NAME"; \
+	fi
 
 stop:
 	$(DOCO) stop
