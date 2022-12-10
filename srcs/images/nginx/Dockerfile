@@ -7,9 +7,9 @@ RUN apt-get update
 RUN apt-get install -y nginx openssl
 
 # create directory for ssl certificates and copy local certificates
-RUN mkdir -p /etc/nginx/ssl
-COPY ./ssl/cert.pem /etc/nginx/ssl/cert.pem
-COPY ./ssl/key.pem /etc/nginx/key.pem
+RUN mkdir -p /etc/nginx/ssl/mycerts
+COPY ./ssl/cert.pem /etc/nginx/ssl/mycerts/cert.pem
+COPY ./ssl/key.pem /etc/nginx/ssl/mycerts/key.pem
 
 # copy nginx configuration on the container
 COPY ./conf/nginx.conf /etc/nginx/conf.d

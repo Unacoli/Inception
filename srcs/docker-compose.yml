@@ -18,7 +18,8 @@ services:
     restart: unless-stopped
 
   wordpress:
-    image: wordpress:php8.1-fpm
+    container_name: wordpress
+    build: ./images/wordpress
     networks:
       - nginx-network
     depends_on:
@@ -30,6 +31,7 @@ services:
       - .env
 
   mariadb:
+    container_name: mariadb
     image: mariadb:latest
     networks:
       - nginx-network
