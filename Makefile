@@ -13,9 +13,9 @@ DOCO	= docker-compose -f srcs/docker-compose.yml -p ${NAME}
 all: data build upd
 
 data: ssl
-	mkdir -p "/home/$$USER/data/"
-	mkdir -p "/home/$$USER/data/mariadb_data/"
-	mkdir -p "/home/$$USER/data/wp_data/"
+	mkdir -p "/mnt/nfs/homes/$$USER/data/"
+	mkdir -p "/mnt/nfs/homes/$$USER/data/mariadb_data/"
+	mkdir -p "/mnt/nfs/homes/$$USER/data/wp_data/"
 
 ssl:
 	mkdir -p "./srcs/images/nginx/ssl/"

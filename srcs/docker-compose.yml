@@ -53,13 +53,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/$USER/data/mariadb_data
+      device: /mnt/nfs/homes/$USER/data/mariadb_data
       o: bind
 
   wp_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/$USER/data/wp_data
+      device: /mnt/nfs/homes/$USER/data/wp_data
       o: bind
  
