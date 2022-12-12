@@ -21,4 +21,4 @@ ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 
 CMD [ "mysqld", "--bind-address=0.0.0.0" ]
 
-# HEALTHCHECK CMD [ "/usr/local/bin/docker-healthcheck" ]
+HEALTHCHECK CMD [ "mysqladmin", "ping", "--silence" ]
