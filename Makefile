@@ -21,7 +21,7 @@ vm-config:
 	sudo docker run hello-world
 	sudo dnf install docker-compose
 	sudo chmod 666 /var/run/docker.sock
-	sudo chmod 777 /etc/hosts/
+	sudo chmod 777 /etc/hosts
 	echo -e "127.0.0.1\tnargouse.42.fr" >> /etc/hosts
 
 data: ssl
