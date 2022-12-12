@@ -17,7 +17,7 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh && chmod +x /usr/local/bin/dock
 
 EXPOSE 3306
 
-HEALTHCHECK CMD [ "mysqladmin ping --silence" ]
+HEALTHCHECK CMD [ "mysqladmin", "ping", "--silence" ]
 
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 
