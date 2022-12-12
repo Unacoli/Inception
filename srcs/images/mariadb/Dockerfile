@@ -12,8 +12,7 @@ RUN mkdir -p /var/run/mysqld && chown -R mysql:mysql /var/run/mysqld && chmod 77
 # copy docker-entrypoint to the container
 COPY ./docker-entrypoint.sh /usr/local/bin/
 COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf 
-COPY ./tools/docker-healthcheck /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh && chmod +x /usr/local/bin/docker-healthcheck
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 3306
 
