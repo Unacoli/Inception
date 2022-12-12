@@ -37,6 +37,12 @@ services:
 
   mariadb:
     container_name: mariadb
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
 #    image: mariadb:latest
     build: ./images/mariadb
     networks:
