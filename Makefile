@@ -32,6 +32,10 @@ clean:
 fclean : clean
 	${DOCO} down -v
 
+rm-data:
+	sudo rm -rf "/home/$$USER/data/"
+	rm -rf "./srcs/images/nginx/ssl/"
+
 re: fclean all
 
 # Docker rules
@@ -39,9 +43,9 @@ re: fclean all
 build:
 	${DOCO} build
 
-upd:
+upd: data
 	${DOCO} up -d
 
 # PHONY
 
-.PHONY: all data ssl stop clean fclean re build upd
+.PHONY: all data ssl stop clean fclean rm-data re build upd
