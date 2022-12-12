@@ -12,6 +12,17 @@ DOCO	= docker-compose -f srcs/docker-compose.yml -p ${NAME}
 
 all: data build upd
 
+vm-config:
+	sudo dnf install openssl
+	sudo dnf -y install dnf-plugins-core
+	sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+	sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+	sudo systemctl start docker
+	sudo docker run hello-world
+	sudo dnf install docker-compose
+	sudo chmod 777 /etc/hosts/
+	echo -e "127.0.0.1\tnargouse.42.fr" >> /etc/hosts
+
 data: ssl
 	mkdir -p "/home/$$USER/data/"
 	mkdir -p "/home/$$USER/data/mariadb_data/"
@@ -41,11 +52,11 @@ re: fclean all
 # Docker rules
 
 build:
-	${DOCO} build
+	${DOCO} build --add-host
 
 upd: data
 	${DOCO} up -d
 
 # PHONY
 
-.PHONY: all data ssl stop clean fclean rm-data re build upd
+.PHONY: all vm-config data ssl stop clean fclean rm-data re build upd
