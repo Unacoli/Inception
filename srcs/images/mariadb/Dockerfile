@@ -1,6 +1,6 @@
 FROM debian:buster
 
-LABEL   maintainer="nargouse@student.42.fr"
+LABEL maintainer="nargouse@student.42.fr"
 
 # install mariadb on the container
 RUN apt-get update
@@ -11,13 +11,12 @@ RUN mkdir -p /var/run/mysqld && chown -R mysql:mysql /var/run/mysqld && chmod 77
 
 # copy docker-entrypoint to the container
 COPY ./docker-entrypoint.sh /usr/local/bin/
-COPY ./conf/conf.sql /usr/local/bin/
+COPY ./conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf 
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/conf.sql
 
 EXPOSE 3306
 
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 
-CMD ["mariadbd", "--bind-address=0.0.0.0"]
+CMD [ "mysqld", "--bind-address=0.0.0.0" ]
