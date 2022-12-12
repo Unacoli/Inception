@@ -17,8 +17,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh && chmod +x /usr/local/bin/dock
 
 EXPOSE 3306
 
-HEALTHCHECK CMD ["docker-healthcheck"]
-
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 
 CMD [ "mysqld", "--bind-address=0.0.0.0" ]
+
+HEALTHCHECK CMD [ "/usr/local/bin/docker-healthcheck" ]
