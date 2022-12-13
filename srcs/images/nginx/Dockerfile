@@ -16,6 +16,7 @@ COPY ./conf/nginx.conf /etc/nginx/conf.d
 
 # nginx configuration
 RUN mkdir -p /run/nginx
+RUN mkdir -p /var/log/nginx && touch /var/log/nginx/access.log && touch /var/log/nginx/error.log
 
 # expose the allowed port
 EXPOSE 443
